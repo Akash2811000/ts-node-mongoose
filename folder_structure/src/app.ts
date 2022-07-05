@@ -3,6 +3,12 @@ const app: Express = express();
 import mongoose from 'mongoose';
 const connection = mongoose.connect('mongodb://localhost:27017/mytsdata');
 import {router} from './controller/student_controller'
+import * as dotenv from 'dotenv';
+dotenv.config();
+
+const port = process.env.PORT;
+
+console.log(port);
 
 
 app.use(express.json());
@@ -17,9 +23,9 @@ res.end();
 
 
 
-app.listen(3000, () => {
+app.listen(port, () => {
 
-console.log(`⚡️[server]: Server is running at 3000`);
+console.log(`⚡️[server]: Server is running at ${port}`);
 
 });
 
